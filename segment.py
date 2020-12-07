@@ -50,8 +50,6 @@ class load_data():
 
 	def Img_transform(self, name, size, split='train'):
 
-		
-
 		assert (isinstance(size, tuple) and len(size)==2)
 
 		if name in ['CS' , 'IDD']:
@@ -84,7 +82,6 @@ def train(args, get_dataset, model, enc=False):
 
 	num_epochs = 10 if args.debug else args.num_epochs
 	
-
 	n_gpus = torch.cuda.device_count()
 	print("\nWorking with {} GPUs".format(n_gpus))
 
@@ -316,7 +313,6 @@ def train(args, get_dataset, model, enc=False):
 							myfile.write("%d\t\t%.4f\t\t%.4f\t\t%.4f\t\t%.4f\t\t%.4f\n"%(epoch,average_epoch_sup_loss.get(datasets[0],0) , average_epoch_sup_loss.get(datasets[1],0), average_epoch_ent_loss.get(datasets[0] , 0) , average_epoch_ent_loss.get(datasets[1] , 0) , average_epoch_loss[phase]))
 						
 
-			## Todo: A better way to close the worker threads.
 			for d in datasets:
 				while True:
 					try:
